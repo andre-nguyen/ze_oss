@@ -68,7 +68,7 @@ def integrate_quaternion_zero_order_hold(t_W_B0, v_W_B0, R_W_B0, B_a_W_B, B_w_W_
    
 def integrate_quaternion_runge_kutta_4(t_W_B0, v_W_B0, R_W_B0, B_a_W_B, B_w_W_B, dt):
     n = np.shape(B_a_W_B)[0]
-    t_W_B = np.zeros((n,3))from pylab import setp
+    t_W_B = np.zeros((n,3))
     t_W_B[0,:] = t_W_B0
     v_W_B = np.zeros((n,3))
     v_W_B[0,:] = v_W_B0
