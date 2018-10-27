@@ -96,7 +96,7 @@ bool RansacRelativePose::solveRelativePose(
   using Problem = opengv::sac_problems::relative_pose::CentralRelativePoseSacProblem;
   using Adapter = opengv::relative_pose::CentralRelativeAdapter;
   Adapter adapter(f_cur, f_ref);
-  boost::shared_ptr<Problem> problem(new Problem(adapter, Problem::NISTER));
+  std::shared_ptr<Problem> problem(new Problem(adapter, Problem::NISTER));
   opengv::sac::Ransac<Problem> ransac;
   ransac.sac_model_ = problem;
   ransac.threshold_ = ogv_threshold_;
@@ -136,7 +136,7 @@ bool RansacRelativePose::solveTranslationOnly(
   using Problem = opengv::sac_problems::relative_pose::TranslationOnlySacProblem;
   using Adapter = opengv::relative_pose::CentralRelativeAdapter;
   Adapter adapter(f_cur, f_ref, T_cur_ref.getRotationMatrix().cast<double>());
-  boost::shared_ptr<Problem> problem(new Problem(adapter));
+  std::shared_ptr<Problem> problem(new Problem(adapter));
   opengv::sac::Ransac<Problem> ransac;
   ransac.sac_model_ = problem;
   ransac.threshold_ = ogv_threshold_;
@@ -175,7 +175,7 @@ bool RansacRelativePose::solveRotationOnly(
   //! @todo: Unify all the repetitive code.
   using Problem = opengv::sac_problems::relative_pose::RotationOnlySacProblem;
   opengv::relative_pose::CentralRelativeAdapter adapter(f_cur, f_ref);
-  boost::shared_ptr<Problem> problem(new Problem(adapter));
+  std::shared_ptr<Problem> problem(new Problem(adapter));
   opengv::sac::Ransac<Problem> ransac;
   ransac.sac_model_ = problem;
   ransac.threshold_ = ogv_threshold_;
