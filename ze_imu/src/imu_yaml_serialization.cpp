@@ -145,7 +145,7 @@ std::shared_ptr<ze::ImuNoiseModel> internal::decodeNoise(const Node& node)
   if(!node.IsMap())
   {
     LOG(ERROR) << "Unable to get parse the imu because the node is not a map.";
-    return false;
+    return nullptr;
   }
 
   // gyroscopes:
@@ -172,7 +172,7 @@ typename std::shared_ptr<ze::ImuIntrinsicModel> internal::decodeIntrinsics(
   if(!node.IsMap())
   {
     LOG(ERROR) << "Unable to get parse intrinsic model because the node is not a map.";
-    return false;
+    return nullptr;
   }
 
   // gyroscopes:
